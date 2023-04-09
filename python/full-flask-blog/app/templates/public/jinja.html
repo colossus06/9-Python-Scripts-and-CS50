@@ -1,0 +1,81 @@
+{% extends "public/templates/public_template.html" %}
+
+{% import "macros/input_macros.html" as im %}
+
+{% block title %}Jinja{% endblock title %}
+
+{% block main %} 
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Jinja Templates</h1>
+
+                <hr>
+                <h4>Variables</h4>
+                <p>Name: {{ my_name }}</p>
+
+                <hr>
+                <h4>Looping with index</h4>
+                <ul>
+                    {% for lang in langs %}
+                        <li> {{loop.index0}} {{lang}} </li>
+                    {% endfor %}
+                </ul>
+
+                <hr>
+
+                <h4>Looping with dict</h4>
+                <ul>
+                    {% for k, v in friends.items() %}
+                        <li> {{k}} is {{v}} years old</li>
+                    {% endfor %}
+                </ul>
+
+                <hr>
+
+                <h4>Looping with keys</h4>
+                <ul>
+                    {% for k in friends.keys() %}
+                        <li> {{k}} is my friend.</li>
+                    {% endfor %}
+                </ul>
+
+                <hr>
+
+                <h4>Accessing class attributes</h4>
+               <p>{{my_remote.name}}</p>
+               <p>{{my_remote.clone()}}</p>
+
+                <hr>
+
+                <hr>
+
+                <h4>Unpack variables</h4>
+                <ul>
+                    {% set a, b=colours %}
+                    <p>{{a}}</p>
+                </ul>
+                <hr>
+
+                <h4>Call a function</h4>
+                <p>{{ repeat("Flask I love u", 10)}}</p>
+
+                <hr>
+
+                <h4>working with macros</h4>
+
+                {{ im.input(label="Your name", name="name", id="name", placeholder="Please enter your name") }}
+               
+                {{ im.input(label="Your age", type="number", name="age",id="age", placeholder="Please enter your age") }}
+                
+                {{ im.input(label="Password", type="password", name="password", id="password", placeholder="Please enter your password") }}
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock main %}
